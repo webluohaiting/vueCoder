@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .container1 {
+      display: flex;
+      width: 500px;
+      background: pink;
+    }
+    .container1 .list {
+      flex: 1;
+      display: flex;
+      flex-wrap: wrap;
+    }
+    .container1 .box {
+      width: 48%;
+      height: 100px;
+      border: 1px solid #666;
+      background: skyblue;
+    }
+    .container1 .box-other {
+      width: 100px;
+    }
+
+    .container2 {
+      display: flex;
+      width: 500px;
+      height: 200px;
+      margin-top: 50px;
+      background: pink;
+    }
+    .container2 .box-left {
+      width: 30%;
+      background: rgb(246, 250, 227);
+    }
+    .container2 .box-center {
+      flex: 1;
+      display: flex;
+      flex-wrap: wrap;
+    }
+    .container2 .center-item {
+      width: 49%;
+      border: 1px solid #666;
+      background: rgb(227, 250, 234);
+    }
+    .container2 .box-right {
+      display: flex;
+      flex-direction: column;
+      width: 20%;
+    }
+    .container2 .right-title {
+      height: 30px;
+    }
+    .container2 .right-item {
+      flex: 1;
+      background: rgb(207, 218, 241);
+      border: 1px solid #666;
+    }
+
+    .container3 {
+      display: flex;
+      align-items: baseline;
+      width: 500px;
+      padding: 10px 20px;
+      margin-top: 50px;
+      font-size: 14px;
+      background: rgb(198, 209, 243);
+    }
+    .container3 .box-left {
+      font-size: 20px;
+      font-weight: 600;
+    }
+    .container3 .box-center {
+      flex: 1;
+      margin: 0 20px;
+    }
+    .container3 .icon {
+      width: 10px;
+      height: 10px;
+    }
+
+    .container4 {
+      width: 500px;
+      margin-top: 50px;
+      background: rgb(236, 238, 247);
+    }
+    .container4 .box-top {
+      width: 100%;
+      padding: 10px;
+    }
+    .container4 .box-bottom {
+      display: flex;
+      width: 100%;
+    }
+    .container4 .box {
+      flex: 1;
+      height: 100px;
+      border: 1px solid #666;
+    }
+
+    .container5 {
+      width: 800px;
+      margin-top: 50px;
+      background: rgb(236, 238, 247);
+    }
+    .container5 .box-top {
+      display: flex;
+      width: 100%;
+    }
+    .container5 .top-box {
+      flex: 1;
+      height: 50px;
+      text-align: center;
+      line-height: 50px;
+      border: 1px solid #666;
+    }
+    .container5 .box-bottom {
+      display: flex;
+      width: 100%;
+      padding: 10px;
+    }
+    .container5 .bottom-left {
+      width: 20%;
+    }
+    .container5 .logo {
+      width: 160px;
+    }
+    .container5 .bottom-right {
+      display: flex;
+      justify-content: space-evenly;
+      width: 30%;
+    }
+    .container5 .bottom-center {
+      display: flex;
+      width: 50%;
+    }
+    .container5 .list {
+      display: flex;
+      flex-direction: column;
+    }
+    .container5 .title {
+      font-size: 18px;
+      font-weight: 600;
+    }
+    .container5 .code {
+      font-size: 10px;
+    }
+    .container5 .img {
+      width: 90px;
+      height: 90px;
+    }
+
+    .cart {
+      display: flex;
+      flex-direction: column;
+      position: fixed;
+      top: 30%;
+      right: 0;
+      background: #fff;
+    }
+    .cart .box {
+      flex: 1;
+      padding: 15px;
+      text-align: center;
+      font-size: 12px;
+      border: 1px solid rgb(233, 222, 222, .8);
+    }
+    .cart .cart-icon {
+      width: 20px;
+      height: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container1">
+    <div class="list">
+      <div class="box">box1</div>
+      <div class="box">box2</div>
+      <div class="box">box3</div>
+      <div class="box">box4</div>
+    </div>
+    <div class="box-other"></div>
+  </div>
+
+  <div class="container2">
+    <div class="box-left">左侧</div>
+    <div class="box-center">
+      <div class="center-item">box1</div>
+      <div class="center-item">box2</div>
+      <div class="center-item">box3</div>
+      <div class="center-item">box4</div>
+    </div>
+    <div class="box-right">
+      <div class="right-title">title</div>
+      <div class="right-item">list1</div>
+      <div class="right-item">list2</div>
+      <div class="right-item">list3</div>
+      <div class="right-item">list4</div>
+    </div>
+  </div>
+
+  <div class="container3">
+    <div class="box-left">学习专区</div>
+    <div class="box-center">
+      <span class="center-title">热搜词:</span>
+      <span class="center-item">box1</span>
+      <span class="center-item">box2</span>
+      <span class="center-item">box3</span>
+      <span class="center-item">box4</span>
+    </div>
+    <div class="box-right">
+      <span>更多好货</span>
+      <img class="icon" src="https://img0.baidu.com/it/u=1487078768,2079498321&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500" alt="">
+    </div>
+  </div>
+
+  <div class="container4">
+    <div class="box-top">热卖品牌</div>
+    <div class="box-bottom">
+      <div class="box">box1</div>
+      <div class="box">box2</div>
+      <div class="box">box3</div>
+      <div class="box">box4</div>
+      <div class="box">box5</div>
+    </div>
+  </div>
+
+  <div class="container5">
+    <div class="box-top">
+      <div class="top-box">box1</div>
+      <div class="top-box">box2</div>
+      <div class="top-box">box3</div>
+      <div class="top-box">box4</div>
+    </div>
+    <div class="box-bottom">
+      <div class="bottom-left">
+        <img class="logo" src="https://img2.baidu.com/it/u=1926176660,2029985012&fm=253&fmt=auto&app=120&f=JPEG?w=568&h=302" alt="">
+        <div>关注我们</div>
+      </div>
+      <div class="bottom-center">
+        <ul class="list">
+          <li class="title">标题</li>
+          <li class="item">列表</li>
+          <li class="item">列表</li>
+        </ul>
+        <ul class="list">
+          <li class="title">标题</li>
+          <li class="item">列表</li>
+          <li class="item">列表</li>
+        </ul>
+        <ul class="list">
+          <li class="title">标题</li>
+          <li class="item">列表</li>
+          <li class="item">列表</li>
+        </ul>
+        <ul class="list">
+          <li class="title">标题</li>
+          <li class="item">列表</li>
+          <li class="item">列表</li>
+        </ul>
+        <ul class="list">
+          <li class="title">标题</li>
+          <li class="item">列表</li>
+          <li class="item">列表</li>
+        </ul>
+      </div>
+      <div class="bottom-right">
+        <div class="code">
+          <img class="img" src="https://img2.baidu.com/it/u=1989038259,1842360401&fm=253&fmt=auto&app=138&f=PNG?w=500&h=500" alt="">
+          <div>扫描下载手机版</div>
+        </div>
+        <div class="code">
+          <img class="img" src="https://img2.baidu.com/it/u=1989038259,1842360401&fm=253&fmt=auto&app=138&f=PNG?w=500&h=500" alt="">
+          <div>扫描下载手机版</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cart">
+    <div class="box">
+      <img class="cart-icon" src="https://img2.baidu.com/it/u=2304412609,707927313&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500" alt="">
+      <div>签到</div>
+    </div>
+    <div class="box">
+      <img class="cart-icon" src="https://img2.baidu.com/it/u=2304412609,707927313&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500" alt="">
+      <div>购物车</div>
+    </div>
+    <div class="box">
+      <img class="cart-icon" src="https://img2.baidu.com/it/u=2304412609,707927313&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500" alt="">
+      <div>APP</div>
+    </div>
+    <div class="box">
+      <img class="cart-icon" src="https://img2.baidu.com/it/u=2304412609,707927313&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500" alt="">
+      <div>TOP</div>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div id ="app">
+    <!-- mustache语法不能应用于标签属性，只能用于标签content -->
+    <h2>{{ message }}</h2>
+    <img v-bind:src="imgUrl" alt="">
+    <a :href="url">百度一下</a>
+  </div>
+
+  <script src="../js/vue.js"></script>
+  <script>
+   //创建Vue实例,得到 ViewModel
+   const app = new Vue({
+    el: '#app',
+    data: {
+      message: 'hello vue',
+      imgUrl: 'https://cn.vuejs.org/images/logo.svg',
+      url: 'http://www.baidu.com'
+    },
+    methods: {}
+   })
+  </script>
+</body>
+</html>

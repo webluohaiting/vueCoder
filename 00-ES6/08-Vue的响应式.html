@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- 
+    1.app.message修改数据，vue内部是如何监听message数据的改变
+    Object.defineProperty => 监听对象属性的改变
+
+    2.当数据发生改变，vue是如何知道要通知哪些人，界面发生刷新 
+    发布订阅者模式
+  -->
+
+  <div id="app">
+    {{ message }}
+    {{ message }}
+    {{ message }}
+    {{ name }}
+  </div>
+
+  <script src="./js/vue.js"></script>
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data: {
+        message: '哈哈',
+        name: 'haha'
+      }
+    })
+  </script>
+  <script>
+    const obj = {
+      message: '哈哈',
+      name: 'haha'
+    }
+    Object.keys(obj).forEach(key => {
+      let value = obj[key]
+      Object.defineProperty(obj, key, {
+        set(newValue) {
+          console.log('监听' + key + '改变')
+          value = newValue
+
+          // 监听到某些属性改变，通知那些用的人要改变
+          // dep.notify()
+        },
+        get() {
+          // 监听是谁要获取该值，将这些监听者记录起来，用于后面改变时通知
+          // const dep = new Dep()
+          // const w1 = new Watcher('张三')
+          // dep.addSub(w1)
+
+          // const w2 = new Watcher('李四')
+          // dep.addSub(w2)
+
+          // const w3 = new Watcher('王五')
+          // dep.addSub(w3)
+
+          return value
+        }
+      })
+    })
+
+    // 发布者：记录所有的订阅者，并在改变时通知发布者改变
+    class Dep {
+      constructor() {
+        this.subscribes = []
+      }
+      // 加入订阅者
+      addSub(watcher) {
+        this.subscribes.push(watcher)
+      }
+      // 通知订阅者改变
+      notify() {
+        this.subscribes.forEach(item => {
+          item.update()
+        })
+      }
+    }
+
+    // 订阅者
+    class Watcher {
+      constructor(name) {
+        this.name = name
+      }
+      update() {
+        // 操作值改变
+        console.log(this.name + '发生改变')
+      }
+    }
+
+    // 模拟创建发布者和记录订阅者
+    const dep = new Dep()
+    const w1 = new Watcher('张三')
+    dep.addSub(w1)
+
+    const w2 = new Watcher('李四')
+    dep.addSub(w2)
+
+    const w3 = new Watcher('王五')
+    dep.addSub(w3)
+
+    // 模拟订阅者通知发布者改变
+    dep.notify()
+    
+  </script>
+</body>
+</html>

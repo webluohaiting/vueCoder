@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 网络请求结果： aaa -> 自己处理（10行）
+    // 处理：aaa111 -> 自己处理（10行）
+    // 处理：aaa111222 -> 自己处理
+
+    // 1.普通方式
+    // new Promise((resolve, reject) => {
+    //   setTimeout(() => {
+    //     const data = 'haha'
+    //     resolve(data)
+    //   }, 1000)
+    // }).then(res => {
+    //   console.log(res, '第一层的10行处理代码')
+
+    //   return new Promise((resolve, reject) => {
+    //     resolve(res + '111')
+    //   })
+    // }).then(res => {
+    //   console.log(res, '第二层的10行处理代码')
+
+    //   return new Promise((resolve, reject) => {
+    //     resolve(res + '222')
+    //   })
+    // }).then(res => {
+    //   console.log(res, '第二层的10行处理代码')
+    // })
+
+    // 2.new Promise(resolve => resolve(结果))简写：
+    // new Promise((resolve, reject) => {
+    //   setTimeout(() => {
+    //     const data = 'haha'
+    //     resolve(data)
+    //   }, 1000)
+    // }).then(res => {
+    //   console.log(res, '第一层的10行处理代码')
+
+    //   return Promise.resolve(res + '111')
+    // }).then(res => {
+    //   console.log(res, '第二层的10行处理代码')
+
+    //   return Promise.resolve(res + '222')
+    // }).then(res => {
+    //   console.log(res, '第二层的10行处理代码')
+    // })
+
+    // 3.省略Promise，直接return
+    new Promise((resolve, reject) => {
+      setTimeout(() => {
+        const isSuccess = true // 模拟请求状态
+        if (isSuccess) {
+          const data = 'haha' // 模拟请求数据
+          resolve(data)
+        } else {
+          reject('error message')
+        }
+      }, 1000)                        
+    }).then(res => {
+      console.log(res, '第一层的10行处理代码')
+
+      return res + '111'
+    }).then(res => {
+      console.log(res, '第二层的10行处理代码')
+
+      return res + '222'
+    }).then(res => {
+      console.log(res, '第二层的10行处理代码')
+    }).catch(err => {
+      console.log(err, '错误')
+    })
+  </script>
+</body>
+</html>

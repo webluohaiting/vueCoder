@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div id ="app">
+    <ul>
+      <li v-for="item in letters">{{ item }}</li>
+      <button @click="btn0Click">非响应式按钮</button>
+      <button @click="btn1Click">push按钮</button>
+      <button @click="btn2Click">pop按钮</button>
+      <button @click="btn3Click">shift按钮</button>
+      <button @click="btn4Click">unshift按钮</button>
+      <button @click="btn5Click">splice按钮</button>
+      <button @click="btn6Click">sort按钮</button>
+      <button @click="btn7Click">reverse按钮</button>
+      <button @click="btn8Click">set按钮</button>
+    </ul>
+  </div>
+
+  <script src="../js/vue.js"></script>
+  <script>
+  //创建Vue实例,得到 ViewModel
+  const app = new Vue({
+    el: '#app',
+    data: {
+      letters: ['A', 'B', 'C', 'D', 'E']
+    },
+    methods: {
+      // 非响应式方法
+      btn0Click() {
+        this.letters[0] = 'aaa'  
+        console.log(this.letters)
+      },
+
+      // 以下为响应式方法
+      // 1.push方法：在数组中最后添加多个元素
+      btn1Click() {
+        this.letters.push('aaa', 'bbb')  
+      },
+
+      // 2.pop方法:删除数组中最后一个元素
+      btn2Click() {
+        this.letters.pop()
+      },
+
+      // 3.shift：删除数组中第一个元素
+      btn3Click() {
+        this.letters.shift()
+      },
+
+      // 4.unshift：在数组中第一个元素添加元素
+      btn4Click() {
+        this.letters.unshift('aaa', 'bbb')
+      },
+
+      // 5.splice：删除元素/插入元素/替换元素,splice(start, deleteNum, insertVal)
+      // 删除splice(start, deleteNum)：第二个参数为删除个数，没有传则删除为后面的全部
+      // 插入splice(start, 0, insertVal)：第二个参数为删除个数0，后面多个参数为插入元素
+      // 替换splice(start, deleteNum, insertVal)：第二个参数为删除个数，后面多个参数为替换元素
+      btn5Click() {
+        // this.letters.splice(2, 2) // 删除
+        // this.letters.splice(2, 0, 'aaa', 'bbb') // 插入
+        this.letters.splice(2, 2, 'aaa', 'bbb') // 替换
+      },
+
+      // 6.sort：排序
+      btn6Click() {
+        this.letters.sort()
+      },
+
+      // 7.reverse：反转
+      btn7Click() {
+        this.letters.reverse()
+      },
+
+      // 需要改变数组元素时，不采用非响应式方法直接改变数组，一般使用splice或者set方法
+      btn8Click() {
+        Vue.set(this.letters, 0, 'aaa')// set方法
+      },
+
+      // 可变参数
+      sum(...nums) {
+        console.log(nums)
+      }
+    }
+  })
+  </script>
+</body>
+</html>

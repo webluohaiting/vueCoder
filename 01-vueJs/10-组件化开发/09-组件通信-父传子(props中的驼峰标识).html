@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div id ="app">
+    <cpn :c-info="info" :child-my-message="message"></cpn>
+  </div>
+  <template id="cpn">
+    <div>
+      <h2>{{ cInfo }}</h2>
+      <h2>{{ childMyMessage }}</h2>
+    </div>
+  </template>
+
+  <script src="../js/vue.js"></script>
+  <script>
+    const cpn = {
+      template: '#cpn',
+      props: {
+        cInfo: {
+          type: Object,
+          default() {
+            return {}
+          }
+        },
+        childMyMessage: {
+          type: String,
+          default: ''
+        }
+      }
+    }
+    //创建Vue实例,得到 ViewModel
+    const app = new Vue({
+      el: '#app',
+      data: {
+        message: 'hello vue',
+        info: {
+          name: 'haha',
+          age: 18,
+          height: 1.88
+        }
+      },
+      components: {
+        cpn
+      },
+      methods: {}
+    })
+  </script>
+</body>
+</html>

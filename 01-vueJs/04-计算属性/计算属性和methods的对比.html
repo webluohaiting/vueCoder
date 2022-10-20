@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div id ="app">
+    <!-- 1.直接拼接：语法过于繁琐 -->
+    <h2>{{ firstName }} {{ lastName }}</h2>
+    <!-- 2.方法获取 -->
+    <h2>{{ getFullName() }}</h2>
+    <h2>{{ getFullName() }}</h2>
+    <h2>{{ getFullName() }}</h2>
+    <h2>{{ getFullName() }}</h2>
+    <!-- 3.计算属性获取 -->
+    <h2>{{ fullName }}</h2>
+    <h2>{{ fullName }}</h2>
+    <h2>{{ fullName }}</h2>
+    <h2>{{ fullName }}</h2>
+  </div>
+
+  <script src="../js/vue.js"></script>
+  <script>
+   //创建Vue实例,得到 ViewModel
+   const app = new Vue({
+    el: '#app',
+    data: {
+      firstName: 'haha',
+      lastName: 'luo'
+    },
+    computed: {
+      fullName: function() {
+        console.log('computed计算') // 只要依赖的fn和ln不变，就只执行一次
+        return this.firstName + ' ' + this.lastName
+      }
+    },
+    methods: {
+      getFullName() {
+        console.log('methods方法') // 执行4次
+        return this.firstName + ' ' + this.lastName
+      }
+    }
+   })
+  </script>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <button>按钮1</button>
+  <button>按钮2</button>
+  <button>按钮3</button>
+  <button>按钮4</button>
+  <button>按钮5</button>
+  <script>
+    // ES5中的var是没有块级作用域的，es6中的let是有块级作用域的（if/for）
+    // ES5之前因为if和for都没有块级作用域的概念，所以很多时候，我们都必须借助于function的作用域来解决应用外面变量的问题
+    // ES6中加入了let，let它是有if和for的块级作用域
+
+    // 1.变量作用域：变量在什么范围内是可用
+    {
+      var name = 'haha'
+      console.log(name)
+    }
+    console.log(name)
+
+    // 2.没有块级作用域引起的问题
+    // （1）if的块级
+    var func
+    // A文件
+    if (true) {
+      var name = 'haha'
+      func = function() {
+        console.log(name)
+      }
+    }
+    // B文件,当if语句作为其他文件被引入使用时,此时改变B文件的name,会导致A文件的name被改变
+    var name = 'hehe'
+    func() // 打印hehe
+    console.log(name) // 打印hehe
+
+    // （2）for的块级
+    // var btns = document.getElementsByTagName('button')
+    // for (var i = 0; i < btns.length; i++) {
+    //   console.log(i) // 进来执行这个循环，i没有作用域，相当于全局变量，执行完i已经是5了，后面执行监听事件，i永远都是5
+    //   btns[i].addEventListener('click', function() {
+    //     console.log('点击第' + i + '个按钮')
+    //   })
+    // }
+
+    // 使用闭包解决问题
+    // var btns2 = document.getElementsByTagName('button')
+    // for (var j = 0; j < btns2.length; j++) {
+    //   (function(j) { // 此时的i是匿名函数的一个新变量
+    //     console.log('闭包' + j)
+    //     btns[j].addEventListener('click', function() {
+    //       console.log('闭包点击第' + j + '个按钮')
+    //     })
+    //   })(j)
+    //   // (function(a) { // 可以改成别的变量名
+    //   //   console.log(a)
+    //   //   btns[a].addEventListener('click', function() {
+    //   //     console.log('点击第' + a + '个按钮')
+    //   //   })
+    //   // })(j)
+    // }
+
+    // 为什么闭包可解决问题：函数是一个作用域，函数传入的变量参数是有局部作用域的
+    var str = 'why'
+    function func(str) { // 此时str已经是局部作用域的一个新的变量了，不受全局变量str的影响
+      console.log(str)
+    }
+    func('haha') // 最后打印haha
+    str = 'how'
+
+    // 3.ES6的let有自己的块级作用域
+    var btns = document.getElementsByTagName('button')
+    for (let k = 0; k < btns.length; k++) {
+      console.log(k) // 相当于每次循环都会重新创建一个新的k,k有自己的作用域，所以不会互相影响
+      btns[k].addEventListener('click', function() {
+        console.log('点击第' + k + '个按钮')
+      })
+    }
+  </script>
+</body>
+</html>

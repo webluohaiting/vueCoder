@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div id ="app">
+    <h2 :style="{ fontSize: finalSize + 'px', color: finalColor }">{{ message }}</h2> <!-- {属性key: 属性值value} -->
+    <h2 :style="getStyles()">{{ message }}</h2> <!-- 方法必须要加（） -->
+  </div>
+
+  <script src="../js/vue.js"></script>
+  <script>
+   //创建Vue实例,得到 ViewModel
+   const app = new Vue({
+    el: '#app',
+    data: {
+      message: 'hello vue',
+      finalSize: 50,
+      finalColor: 'red'
+    },
+    methods: {
+      getStyles: function() {
+        return { fontSize: this.finalSize + 'px', color: this.finalColor }
+      }
+    }
+   })
+  </script>
+</body>
+</html>

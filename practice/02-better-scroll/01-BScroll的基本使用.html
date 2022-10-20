@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .content {
+      height: 200px;
+      background: pink;
+      overflow: hidden;
+      /* overflow-y: scroll; */
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <div class="content">
+      <ul class="wrapper">
+        <button class="btn">按钮</button>
+        <li>列表</li>
+        <li>列表</li>
+        <li>列表</li>
+        <li>列表</li>
+        <li>列表</li>
+        <li>列表</li>
+        <li>列表</li>
+        <li>列表</li>
+        <li>列表</li>
+        <li>列表</li>
+        <li>列表</li>
+        <li>列表</li>
+        <li>列表</li>
+        <li>列表</li>
+        <li>列表</li>
+        <li>列表</li>
+        <li>列表</li>
+        <li>列表</li>
+        <li>列表</li>
+        <li>列表</li>
+        <li>列表</li>
+        <li>列表</li>
+        <li>列表</li>
+        <li>列表</li>
+        <li>列表</li>
+        <li>列表</li>
+        <li>列表</li>
+        <li>列表</li>
+        <li>列表</li>
+        <li>列表</li>
+        <li>列表</li>
+        <li>列表</li>
+        <li>列表</li>
+        <li>列表</li>
+        <li>列表</li>
+        <li>列表</li>
+        <li>列表</li>
+        <li>列表</li>
+        <li>列表</li>
+        <li>列表</li>
+        <li>列表</li>
+        <li>列表</li>
+        <li>列表</li>
+        <li>列表</li>
+        <li>列表</li>
+        <li>列表</li>
+        <li>列表</li>
+        <li>列表</li>
+        <li>列表</li>
+        <li>列表</li>
+        <li>列表</li>
+        <li>列表</li>
+        <li>列表</li>
+        <li>列表</li>
+        <li>列表</li>
+        <li>列表</li>
+        <li>列表</li>
+        <li>列表</li>
+        <li>列表</li>
+        <li>列表</li>
+        <li>列表</li>
+        <li>列表</li>
+        <li>列表</li>
+        <li>列表</li>
+        <li>列表</li>
+        <li>列表</li>
+        <li>列表</li>
+        <li>列表</li>
+        <li>列表</li>
+        <li>列表</li>
+        <li>列表</li>
+        <li>列表</li>
+        <li>列表</li>
+        <li>列表</li>
+        <li>列表</li>
+        <li>列表</li>
+        <li>列表</li>
+        <li>列表</li>
+        <li>列表</li>
+        <li>列表</li>
+        <li>列表</li>
+        <li>列表</li>
+        <li>列表</li>
+        <li>列表</li>
+        <li>列表</li>
+        <li>列表</li>
+        <li>列表</li>
+        <li>列表</li>
+        <li>列表</li>
+        <li>列表</li>
+        <li>列表</li>
+        <li>列表</li>
+        <li>列表</li>
+        <li>列表</li>
+        <li>列表</li>
+        <li>列表</li>
+        <li>列表</li>
+        <li>列表</li>
+        <li>列表</li>
+        <li>列表</li>
+      </ul>
+    </div>
+  </div>
+  <!-- <script src="https://unpkg.com/@better-scroll/core@latest/dist/core.js"></script> -->
+  <script src="https://unpkg.com/better-scroll@latest/dist/better-scroll.js"></script>
+  <script>
+    // 默认情况下，BScroll是不可以实时地监听滚动位置的
+    // probeType，侦测
+    // 0是默认值，不侦测，
+    // 1是不侦测，
+    // 2是侦测，滑动惯性是不侦测的
+    // 3是侦测，滑动惯性也侦测
+    // const bScroll = new BScroll(document.querySelector('.content'), {
+    //   probeType: 2,
+    //   click: true,
+    //   pullUpLoad: true
+    // })
+    const bScroll = BetterScroll.createBScroll('.content', {
+      probeType: 2,
+      click: true,
+      pullUpLoad: true
+    })
+    
+    bScroll.on('scroll', (position) => {
+      // console.log(position)
+    })
+    bScroll.on('pullingUp', () => {
+      console.log('11')
+
+      // 防止多次触发
+      setTimeout(() => {
+        bScroll.finishPullUp()
+      }, 2000)
+    })
+
+    document.querySelector('.btn').addEventListener('click', e => {
+      console.log(e)
+    })
+  </script>
+</body>
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .box {
+      /* 1.开启flex布局：
+        flex: 块级元素
+        inline-flex: 行内元素
+       */
+      display: flex;
+      /* 2.flex-direction 决定主轴的方向*/
+      /* 从左到右 */
+      /* flex-direction: row; */
+      /* 从右到左 */
+      /* flex-direction: row-reverse; */
+      /* 从上到下 */
+      /* flex-direction: column; */
+      /* 从下到上 */
+      /* flex-direction: column-reverse; */
+
+      /* 3.justify-content：决定主轴的对齐方式(不改变方向) */
+      /* 在main start对齐 */
+      /* justify-content: flex-start; */
+      /* 在main end对齐 */
+      /* justify-content: flex-end; */
+      /* 在中间对齐 */
+      /* justify-content: center; */
+      /* 在两端对齐,间隔相等 */
+      /* justify-content: space-between; */
+      /* 等分对齐(所有间隔相等) */
+      /* justify-content: space-evenly; */
+      /* 等分对齐(两端距离为中间间隔的一半) */
+      /* justify-content: space-around; */
+
+      /* 4.align-items：决定flex items在交叉轴的对齐方式 */
+      /* normal等同stretch, item没有设置高度时，在cross方向的size为auto,自动拉伸至container高度 */
+      /* align-items: normal;
+      align-items: stretch; */
+      /* 在cross start对齐 */
+      /* align-items: flex-start; */
+      /* 在cross end对齐 */
+      /* align-items: flex-end; */
+      /* 在cross 中心对齐 */
+      /* align-items: center; */
+      /* 跟文本基线对齐，多行文本以第一行文本作为基线 */
+      /* align-items: baseline; */
+
+      /* 5.flex-wrap: 决定是否换行显示 */
+      /* 默认情况下，所有的flex-items都会在同一行显示,items被压缩 */
+      /* flex-wrap: nowrap; */
+      /* 自动换行，不压缩 */
+      /* flex-wrap: wrap; */
+      /* 从底部开始逆行换行 */
+      /* flex-wrap: wrap-reverse; */
+
+      /* 6.flex-flow：缩写属性 =》 flex-direction || flex-wrap */
+      /* flex-flow: row-reverse wrap; */
+
+      /* 7.align-content:决定多行的flex-items在交叉轴上的对齐方式 */
+      /* 同align-items: stretch */
+      /* align-content: stretch; */
+      /* 整块内容从cross start开始，连接换行 */
+      /* align-content: flex-start; */
+      /* 整块内容从cross end开始，连接换行 */
+      /* align-content: flex-end; */
+      /* 整块内容在中线 */
+      /* align-content: center; */
+      /* 整块内容上下两端对齐，中间间隔均分 */
+      /* align-content: space-between; */
+      /* 整块内容上下两端和中间间隔都均分 */
+      /* align-content: space-evenly; */
+      /* 整块内容上下两端间隔为中间间隔的一半 */
+      /* align-content: space-around; */
+
+      width: 500px;
+      height: 300px;
+      background: pink;
+    }
+    .item {
+      width: 100px;
+      height: 100px;
+      text-align: center;
+      color: #fff;
+      
+    }
+    .item1 {
+      /* height: 120px; */
+      background: blue;
+      /* font-size: 50px; */
+    }
+    .item2 {
+      /* height: 60px; */
+      background: rgb(134, 233, 130);
+    }
+    .item3 {
+      /* height: 150px; */
+      background: rgb(212, 104, 131);
+    }
+    .item4 {
+      /* height: 200px; */
+      background: rgb(219, 238, 133);
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <div class="item item1">item1</div>
+    <div class="item item2">item2</div>
+    <div class="item item3">item3</div>
+    <!-- <div class="item item4">item4</div>
+    <div class="item item1">item5</div>
+    <div class="item item3">item6</div>
+    <div class="item item4">item7</div>
+    <div class="item item1">item8</div>
+    <div class="item item2">item9</div> -->
+  </div>
+  <strong>strong元素</strong>
+</body>
+</html>

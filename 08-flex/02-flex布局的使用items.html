@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .box {
+      display: flex;
+      /* align-items: center; */
+      width: 500px;
+      height: 300px;
+      background: pink;
+    }
+    .item {
+      width: 100px;
+      height: 100px;
+      text-align: center;
+      color: #fff;
+      
+    }
+    .item1 {
+      /* 1.order排序，越小越前 */
+      /* order: 10; */
+
+      /* 2.align-self: 单独决定某个元素的align-items，会覆盖父元素的align-items */
+      /* align-self: flex-end; */
+
+      /* 3.flex-grow：根据剩余的空间，扩展大小
+        如果所有flex-grow相加的值大于1，则剩余空间（100px)/总和(5)=20, 则item1宽度加20*2，其余加20
+        如果所有flex-grow相加的值小于1，则用小数乘以剩余空间为所加的宽度，不会占满总宽度
+        最终的size不能超过maxWidth/maxHeight
+       */
+      /* flex-grow: 2; */
+
+      /* 4.flex-shrink：根据超过的空间，确定收缩比例大小
+        如果所有flex-shrink相加的值大于1，则超过空间（300px)/总和(5)=60, 则item1宽度缩减60*2，其余缩减60
+        如果所有flex-shrink相加的值小于1，则用小数乘以剩余空间为所缩减的宽度，最终会超出总宽度
+       */
+      /* flex-shrink: 2; */
+
+      /* 5.flex-basis:决定单个item的宽度 */
+      flex-basis: 200px;
+      
+      background: blue;
+    }
+    .item2 {
+      /* order: 6; */
+      /* flex-grow: 1; */
+      /* flex-shrink: 1; */
+      background: rgb(134, 233, 130);
+    }
+    .item3 {
+      /* order: 100; */
+      /* flex-grow: 1; */
+      /* flex-shrink: 1; */
+      background: rgb(212, 104, 131);
+    }
+    .item4 {
+      /* order: 20; */
+      /* flex-grow: 1; */
+      /* flex-shrink: 1; */
+      background: rgb(219, 238, 133);
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <div class="item item1">item1</div>
+    <div class="item item2">item2</div>
+    <div class="item item3">item3</div>
+    <div class="item item4">item4</div>
+  </div>
+  <strong>strong元素</strong>
+</body>
+</html>

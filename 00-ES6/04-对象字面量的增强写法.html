@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // TypeScript(微软microsoft)：ts类型检测
+    // flow(facebook)
+    // angular(chrome)
+    // react(fackbook)
+    // 对象字面量
+    const obj = {
+      name: 'haha',
+      age: 20,
+      run: function() {
+        console.log('在奔跑')
+      },
+      eat: function() {
+        console.log('在吃')
+      }
+    }
+    
+    // 1.属性的增强写法
+    const name = 'haha'
+    const age = 20
+    // ES5写法
+    const obj = {
+      name: name,
+      age: age
+    }
+    // ES6写法
+    const obj = {
+      name,
+      age
+    }
+
+    // 2.函数的增强写法
+    // ES5写法
+    const obj = {
+      run: function() {
+        console.log('在奔跑')
+      }
+    }
+    // ES6写法
+    const obj = {
+      run() {
+        console.log('在奔跑')
+      }
+    }
+  </script>
+</body>
+</html>

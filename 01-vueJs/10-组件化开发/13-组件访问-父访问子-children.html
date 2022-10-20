@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <cpn ref="cpn1"></cpn>
+    <cpn ref="cpn2"></cpn>
+    <cpn ref="cpn3"></cpn>
+    <button @click="btnClick">按钮</button>
+  </div>
+
+  <template id="cpn">
+    <div>我是子组件</div>
+  </template>
+
+  <script src="../js/vue.js"></script>
+  <script>
+    //创建Vue实例,得到 ViewModel
+    const app = new Vue({
+      el: '#app',
+      data: {
+        message: 'hello vue'
+      },
+      components: {
+        cpn: {
+          template: '#cpn',
+          data() {
+            return {
+              name: '我是自组件的name'
+            }
+          },
+          methods: {
+            showMessage() {
+              console.log('showMessage')
+            }
+          }
+        }
+      },
+      methods: {
+        btnClick() {
+          // 1.$children
+          // console.log(this.$children)
+          // for(let child of this.$children) {
+          //   console.log(child.name)
+          //   child.showMessage()
+          // }
+
+          // 2.$refs
+          console.log(this.$refs) // 没有ref绑定时，为空对象
+        }
+      }
+    })
+  </script>
+</body>
+</html>

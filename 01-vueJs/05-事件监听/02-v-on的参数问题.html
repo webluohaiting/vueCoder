@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div id ="app">
+    <!-- 1.事件调用的方法没有参数 -->
+    <button @click="btn1Click">按钮一</button> <!-- 可以共用方法 -->
+    <button @click="btn1Click()">按钮一</button>
+    <br>
+
+    <!-- 2.在事件定义时，写函数时省略了小括号，但是方法本身是需要一个参数的 -->
+    <button @click="btn2Click(123)">按钮二</button> <!-- 打印123 -->
+    <button @click="btn2Click()">按钮二</button> <!-- 不传参数时，打印undefined -->
+    <button @click="btn2Click">按钮二</button> <!-- vue会默认将浏览器生成的event事件对象作为参数传入到方法 -->
+    <br>
+
+    <!-- 3.方法定义时，我们需要event对象，同时又需要其他参数 -->
+    <!-- 在调用方法时，如果手动的获取到浏览器参数的event的对象：$event -->
+    <button @click="btn3Click(123, $event)">按钮三</button>
+  </div>
+
+  <script src="../js/vue.js"></script>
+  <script>
+   //创建Vue实例,得到 ViewModel
+   const app = new Vue({
+    el: '#app',
+    data: {
+      counter: 0
+    },
+    methods: {
+      btn1Click() {
+        console.log('btn1Click')
+      },
+      // 如果函数需要参数，但是没有传入func()，那打印为undefined
+      btn2Click(e) {
+        console.log('----', e)
+      },
+      btn3Click(val, event) {
+        console.log('----', val, event)
+      }
+    }
+   })
+  </script>
+</body>
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <div>{{ name }}</div>
+    <div>{{ name }}</div>
+    <div>{{ age }}</div>
+    <div>{{ age }}</div>
+  </div>
+  <!-- <script src="./js/vue.js"></script> -->
+  <script>
+    class Dep {
+      constructor() {
+        this.subscribes = []
+      }
+      addSub(watcher) {
+        
+        this.subscribes.push(watcher)
+        // console.log( this.subscribes)
+      }
+      notify(val) {
+        this.subscribes.forEach(item => {
+          console.log(item.name)
+          item.update(val)
+        })
+      }
+    }
+
+    class Watcher {
+      constructor(name) {
+        this.name = name
+      }
+      update(val) {
+        console.log('正在改变', val)
+        // 操作值改变
+        // const reg = new RegExp(this.name)
+        // console.log(reg)
+        // const app = document.getElementById('app')
+        // for(let i in app.getElementsByTagName('div')) {
+        //   const div = app.getElementsByTagName('div')[i]
+        //   // console.log(div)
+        //   if (reg.test(div.innerHTML)) {
+        //     app.getElementsByTagName('div')[i].innerHTML = val
+        //   }
+        // }
+      }
+    }
+
+
+    const obj = {
+      name: 'haha',
+      age: 20
+    }
+    // const reg = /\{\{(.*)\}\}/g
+    
+    
+    let observer = []
+    Object.keys(obj).map(key => {
+      if (!observer.includes(key)) {
+        observer[key] = new Dep()
+      }
+      
+      let index = 0
+      let value = obj[key]
+      Object.defineProperty(obj, key, {
+        set(val) {
+          console.log('准备通知并改变订阅者')
+          observer[key].notify(val)
+          value = val
+        },
+        get(val) {
+          console.log('准备加入订阅者', key + index)
+          const watcher = new Watcher(key)
+          observer[key].addSub(watcher)
+          console.log(observer[key])
+          index ++
+          return value
+        }
+      })
+      console.log(observer)
+      
+    })
+
+    
+    const reg1 = /name/
+    const reg2 = /age/
+
+    const app = document.getElementById('app')
+    for(let i in app.getElementsByTagName('div')) {
+      const div = app.getElementsByTagName('div')[i]
+      console.log(div)
+      if (reg1.test(div.innerHTML)) {
+        app.getElementsByTagName('div')[i].innerHTML = obj.name
+      } else if (reg2.test(div.innerHTML)) {
+        app.getElementsByTagName('div')[i].innerHTML = obj.age
+      }
+    }
+
+
+  </script>
+  
+</body>
+</html>

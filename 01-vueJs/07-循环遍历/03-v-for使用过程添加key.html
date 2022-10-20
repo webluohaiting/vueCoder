@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div id ="app">
+    <ul>
+      <!-- diff算法是将插入的值直接插入列表原来的元素，而原来的元素值进行后移，性能较差 -->
+      <!-- 使用key可以使元素跟值一一对应，新插入时，直接创建一个新的元素并将新元素和值插入列表指定位置 -->
+      <!-- key值必须和letters一一对应，用index达不到优化性能效果 -->
+      <li v-for="item in letters" :key="item">{{ item }}</li>
+    </ul>
+  </div>
+
+  <script src="../js/vue.js"></script>
+  <script>
+   //创建Vue实例,得到 ViewModel
+   const app = new Vue({
+    el: '#app',
+    data: {
+      letters: ['A', 'B', 'C', 'D', 'E']
+    },
+    methods: {}
+   })
+  </script>
+</body>
+</html>

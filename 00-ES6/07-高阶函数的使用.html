@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 编程范式：命令式编程/声明式编程
+    // 编程范式：面向对象编程（第一公民：对象）/函数式编程（第一公民：函数）
+    // filter/map/reduce
+
+    // 需求：1.取出所有小于100的数字
+    // 2.将所有小于100的数字进行转化：全部*2
+    // 3.将得到的数字全部求和
+    
+    const nums = [10, 20, 111, 222, 444, 40, 50]
+
+    // 1.传统做法
+    let newNums = []
+    for (let n of nums) {
+      if (n < 100) {
+        newNums.push(n)
+      }
+    }
+    let new2Nums = []
+    for (let n of newNums) {
+      if (n < 100) {
+        new2Nums.push(n * 2)
+      }
+    }
+    let total = 0
+    for (let n of new2Nums) {
+      total += n
+    }
+    console.log('3个结果:', newNums, new2Nums, total)
+
+    // 2.高阶函数的做法
+    // （1）filter的使用
+    // filter中的回调函数必须返回一个boolean值
+    // 如果boolean为true,函数内部都会自动将这次回调的n加入到新的数组中
+    // 如果boolean为false,函数内部会自动过滤掉这次的n
+    let filterNums = nums.filter(function(n) {
+      return n < 100
+    })
+
+    // （2）map的使用
+    // return返回的数据重新插入mapNums中
+    let mapNums = filterNums.map(function(n) {
+      return n * 2
+    })
+
+    // （3）reduce的使用
+    // reduce作用对数组中所有内容进行汇总
+    // reduce(function(sum, item) {}, 初始化的值)
+    // sum一开始为初始化的值，后面为return返回的值(即为求和的值)，
+    // item为下一个加入求和的项
+    let reduceNums = mapNums.reduce(function(sum, n) {
+      return sum + n
+    }, 0)
+    console.log('高阶函数3个结果:', filterNums, mapNums, reduceNums)
+
+    // 3.高阶函数的简写方式
+    let result = nums.filter(function(n) {
+      return n < 100
+    }).map(function(n) {
+      return n * 2
+    }).reduce(function(sum, n) {
+      return sum + n
+    }, 0)
+    console.log('最终结果：', result)
+
+    // 4.高阶函数的箭头函数形式
+    let finalResult = nums.filter(n => n < 100).map(n => n *2).reduce((sum, n) => sum + n, 0)
+    console.log('箭头函数最终结果：', result)
+  </script>
+</body>
+</html>

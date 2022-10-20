@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    new Promise((resolve, reject) => {
+      setTimeout(() => {
+        const isSuccess = true // 模拟请求状态
+        if (isSuccess) {
+          const data = 'haha' // 模拟请求数据
+          resolve(data)
+        } else {
+          reject('error message')
+        }
+      }, 1000)
+    }).then(
+      res => {
+        console.log('成功', res)
+      },
+      err => {
+        console.log('失败', err)
+      }
+    )
+  </script>
+</body>
+</html>

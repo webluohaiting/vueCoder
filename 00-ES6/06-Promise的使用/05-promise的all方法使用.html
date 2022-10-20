@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // all方法传入数组
+    Promise.all([
+      new Promise(resolve => {
+        setTimeout(() => {
+          resolve('haha')
+        }, 1000)
+      }),
+      new Promise(resolve => {
+        setTimeout(() => {
+          resolve('heiehi')
+        }, 1000)
+      })
+    ]).then(res => {
+      console.log(res)
+    })
+  </script>
+</body>
+</html>
